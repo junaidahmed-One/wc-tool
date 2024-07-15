@@ -24,10 +24,37 @@ const read = (path: string): Promise<String> =>
 
 async function numberOfLines(filename: string) {
 	const resolvedPath = path.resolve(filename);
+
+	if (!fs.existsSync(resolvedPath)) {
+		throw new Error(`File not found ${resolvedPath}`);
+	}
+
 	const info = await read(resolvedPath);
-	//console.log(info);
+
+	//splitting the text at line breaks
 	const temp = info.split("\r\n");
+
 	return temp.length;
 }
 
-export { numberOfbytes, numberOfLines };
+async function numberOfWords(filename: string) {
+	const resolvedPath = path.resolve(filename);
+
+	if (!fs.existsSync(resolvedPath)) {
+		throw new Error(`File not found ${resolvedPath}`);
+	}
+
+	const info = await read(resolvedPath);
+
+	//remove newline characters, multiple spaces, leading and trailing spaces.
+	const cleanData = info
+		.replace(/[\r\n]+/g, " ")
+		.replace(/\s+/g, " ")
+		.trim();
+
+	const words = cleanData.split(" ");
+
+	return words.length;
+}
+
+export { numberOfbytes, numberOfLines, numberOfWords };
