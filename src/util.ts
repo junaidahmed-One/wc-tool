@@ -57,4 +57,17 @@ async function numberOfWords(filename: string) {
 	return words.length;
 }
 
-export { numberOfbytes, numberOfLines, numberOfWords };
+async function numberOfCharacters(filename: string) {
+	const resolvedPath = path.resolve(filename);
+
+	if (!fs.existsSync(resolvedPath)) {
+		throw new Error(`File not found ${resolvedPath}`);
+	}
+
+	const info = await read(resolvedPath);
+
+	const chars = info.split("");
+	return chars.length;
+}
+
+export { numberOfbytes, numberOfLines, numberOfWords, numberOfCharacters };
