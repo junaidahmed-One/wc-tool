@@ -7,7 +7,6 @@ import {
 	numberOfLines,
 	numberOfWords,
 } from "./util";
-import path from "path";
 
 program
 	.version("1.0.0")
@@ -29,10 +28,9 @@ program
 					numberOfCharacters(filePath),
 					numberOfbytes(filePath),
 				]);
-				console.log(`Number of lines: ${lines}`);
-				console.log(`Number of words: ${words}`);
-				console.log(`Number of characters: ${chars}`);
-				console.log(`Number of bytes: ${bytes}`);
+				console.log(
+					`Number of lines: ${lines} Number of words: ${words} Number of characters: ${chars} Number of bytes: ${bytes}`
+				);
 			} catch (error) {
 				console.error(error);
 			}
@@ -42,16 +40,30 @@ program
 					console.log(`Number of bytes in a file : ${options.byte}`);
 					break;
 				case "lines":
-					const line = await numberOfLines(options.lines);
-					console.log(`Number of lines : ${line}`);
+					try {
+						const line = await numberOfLines(options.lines);
+						console.log(`Number of lines : ${line}`);
+					} catch (error) {
+						console.log("Unable to get number of lines..");
+					}
 					break;
 				case "words":
-					const words = await numberOfWords(options.words);
-					console.log(`Number of words : ${words}`);
+					try {
+						const words = await numberOfWords(options.words);
+						console.log(`Number of words : ${words}`);
+					} catch (error) {
+						console.log("Unable to get number of words..");
+					}
 					break;
 				case "chars":
-					const totChars = await numberOfCharacters(options.chars);
-					console.log(`Number of Characters : ${totChars}`);
+					try {
+						const totChars = await numberOfCharacters(
+							options.chars
+						);
+						console.log(`Number of Characters : ${totChars}`);
+					} catch (error) {
+						console.log("Unable to get number of characters..");
+					}
 					break;
 				default:
 					console.log(

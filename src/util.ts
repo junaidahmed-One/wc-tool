@@ -1,7 +1,5 @@
-import { error } from "console";
 import * as fs from "fs";
 import path from "path";
-import { types } from "util";
 
 function numberOfbytes(filename: string) {
 	const resolvedPath = path.resolve(filename);
