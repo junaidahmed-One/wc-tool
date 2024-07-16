@@ -11,8 +11,8 @@ import {
 program
 	.version("1.0.0")
 	.description("test wc")
-	.option("-c, --byte [filePath]", "number of bytes")
-	.option("-l, --lines [filePath]", "number of lines")
+	.option("-c, --byte <filePath>", "number of bytes")
+	.option("-l, --lines <filePath>", "number of lines")
 	.option("-w, --words <filePath>", "number of words")
 	.option("-m, --chars <filePath>", "number of characters")
 	.argument("[filePath]", "displays all functionalities supported")

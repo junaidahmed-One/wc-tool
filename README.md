@@ -47,6 +47,12 @@ The tool can be run with the following command:
 wc-tool -c <filename>
 ```
 
+To see the list of supported flags, use the help option:
+
+```bash
+wc-tool --help
+```
+
 ## Note
 
 Currently, this project doesn't support standard input.
