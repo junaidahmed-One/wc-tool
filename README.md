@@ -28,13 +28,17 @@ Follow the steps below to set up and run the project:
     npm install
     ```
 
-3. **Link the tool globally**
+3. **Build the project**
+    ```bash
+    npm run build
+    ```
+4. **Link the tool globally**
 
     ```bash
     npm link
     ```
 
-4. **Navigate to the source directory**
+5. **Navigate to the source directory**
     ```bash
     cd test/
     ```
