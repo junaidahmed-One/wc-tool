@@ -11,8 +11,8 @@ import {
 program
 	.version("1.0.0")
 	.description("test wc")
-	.option("-c, --byte <filePath>", "number of bytes", numberOfbytes)
-	.option("-l, --lines <filePath>", "number of lines")
+	.option("-c, --byte [filePath]", "number of bytes")
+	.option("-l, --lines [filePath]", "number of lines")
 	.option("-w, --words <filePath>", "number of words")
 	.option("-m, --chars <filePath>", "number of characters")
 	.argument("[filePath]", "displays all functionalities supported")
@@ -37,7 +37,12 @@ program
 		} else {
 			switch (enteredFlags[0]) {
 				case "byte":
-					console.log(`Number of bytes in a file : ${options.byte}`);
+					try {
+						const numbyte = numberOfbytes(options.byte);
+						console.log(`Number of bytes in a file : ${numbyte}`);
+					} catch (error) {
+						console.error(`Unable to process : ${error}`);
+					}
 					break;
 				case "lines":
 					try {
